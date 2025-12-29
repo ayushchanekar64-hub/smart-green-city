@@ -3,11 +3,47 @@
 .report-form,
 .search-form {
   background: white;
-  padding: 40px;
-  border-radius: 16px;
-  box-shadow: var(--shadow);
-  max-width: 700px;
+  padding: 48px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  max-width: 750px;
   margin: 0 auto;
+  border: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Top Gradient Border */
+.report-form::before,
+.search-form::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary), var(--primary-light));
+}
+
+/* Decorative Background Pattern */
+.report-form::after,
+.search-form::after {
+  content: '';
+  position: absolute;
+  bottom: -50px;
+  right: -50px;
+  width: 300px;
+  height: 300px;
+  background: 
+    radial-gradient(circle, rgba(16, 185, 129, 0.03) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.report-form > *,
+.search-form > * {
+  position: relative;
+  z-index: 1;
 }
 
 .form-group {
@@ -16,21 +52,30 @@
 
 .form-group label {
   display: block;
-  margin-bottom: 8px;
-  font-weight: 600;
+  margin-bottom: 10px;
+  font-weight: 700;
   color: var(--text);
+  font-size: 0.95rem;
+  letter-spacing: 0.3px;
 }
 
 .form-group input,
 .form-group select,
 .form-group textarea {
   width: 100%;
-  padding: 12px 16px;
+  padding: 14px 18px;
   border: 2px solid var(--border);
-  border-radius: 8px;
+  border-radius: var(--radius-md);
   font-size: 1rem;
   font-family: inherit;
-  transition: border-color 0.2s;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background: white;
+}
+
+.form-group input:hover,
+.form-group select:hover,
+.form-group textarea:hover {
+  border-color: rgba(16, 185, 129, 0.4);
 }
 
 .form-group input:focus,
@@ -38,6 +83,8 @@
 .form-group textarea:focus {
   outline: none;
   border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+  transform: translateY(-1px);
 }
 
 .location-input {
@@ -64,17 +111,44 @@
 
 .success-card {
   background: white;
-  padding: 60px 40px;
-  border-radius: 16px;
-  box-shadow: var(--shadow-lg);
+  padding: 70px 50px;
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-xl);
   text-align: center;
-  max-width: 600px;
+  max-width: 650px;
   margin: 0 auto;
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.success-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.1), transparent);
+  border-radius: 50%;
 }
 
 .success-icon {
-  font-size: 4rem;
-  margin-bottom: 20px;
+  font-size: 5rem;
+  margin-bottom: 24px;
+  display: inline-block;
+  animation: successPop 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+@keyframes successPop {
+  0% {
+    transform: scale(0) rotate(-180deg);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1) rotate(0);
+    opacity: 1;
+  }
 }
 
 .success-card h2 {
@@ -83,20 +157,22 @@
 }
 
 .complaint-id-box {
-  background: var(--bg);
-  padding: 20px;
-  border-radius: 12px;
-  margin: 24px 0;
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.05), rgba(16, 185, 129, 0.1));
+  padding: 24px;
+  border-radius: var(--radius-md);
+  margin: 28px 0;
   font-size: 1.1rem;
+  border: 2px dashed var(--primary);
 }
 
 .complaint-id {
   display: block;
-  font-size: 1.5rem;
-  font-weight: 700;
+  font-size: 1.8rem;
+  font-weight: 900;
   color: var(--primary);
-  margin-top: 8px;
-  letter-spacing: 2px;
+  margin-top: 10px;
+  letter-spacing: 3px;
+  text-shadow: 0 2px 4px rgba(16, 185, 129, 0.2);
 }
 
 .note {
@@ -119,22 +195,47 @@
 
 .search-input {
   flex: 1;
-  padding: 14px 20px;
+  padding: 16px 24px;
   border: 2px solid var(--border);
-  border-radius: 8px;
+  border-radius: var(--radius-md);
   font-size: 1.1rem;
+  transition: all 0.3s;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+  transform: translateY(-2px);
 }
 
 .alert {
-  padding: 16px 20px;
-  border-radius: 8px;
-  margin: 20px 0;
+  padding: 18px 24px;
+  border-radius: var(--radius-md);
+  margin: 24px 0;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .alert-error {
   background: #fee2e2;
   color: #991b1b;
   border: 1px solid #fecaca;
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.1);
 }
 
 @media (max-width: 768px) {

@@ -35,15 +35,60 @@ const Analytics = () => {
       const month = new Date(c.date).toLocaleDateString('en-US', { month: 'short' });
       months[month] = (months[month] || 0) + 1;
     });
-    return Object.entries(months);
+    return Object.entries(months).map(([month, count]) => ({
+      month,
+      count
+    }));
+  };
+
+  const getPriorityStats = () => {
+    const priorities = { 'High': 0, 'Medium': 0, 'Low': 0 };
+    complaints.forEach(c => {
+      const priority = c.priority || 'Medium';
+      priorities[priority] = (priorities[priority] || 0) + 1;
+    });
+    return Object.entries(priorities).map(([priority, count]) => ({
+      priority,
+      count,
+      percentage: complaints.length > 0 ? ((count / complaints.length) * 100).toFixed(1) : 0
+    }));
+  };
+
+  const getDepartmentStats = () => {
+    const departments = {
+      'Sanitation': Math.floor(Math.random() * 20) + 15,
+      'Roads': Math.floor(Math.random() * 15) + 10,
+      'Water Supply': Math.floor(Math.random() * 12) + 8,
+      'Electricity': Math.floor(Math.random() * 10) + 5,
+      'Parks': Math.floor(Math.random() * 8) + 3
+    };
+    return Object.entries(departments).map(([dept, hours]) => ({
+      department: dept,
+      hours
+    }));
+  };
+
+  const getEngagementStats = () => {
+    return [
+      { activity: 'Reports Filed', count: complaints.length },
+      { activity: 'Community Events', count: 47 },
+      { activity: 'Green Challenges', count: 2773 },
+      { activity: 'Volunteer Hours', count: 1240 },
+      { activity: 'Trees Planted', count: 15000 }
+    ];
   };
 
   const typeStats = getTypeStats();
   const statusStats = getStatusStats();
   const monthlyTrend = getMonthlyTrend();
+  const priorityStats = getPriorityStats();
+  const departmentStats = getDepartmentStats();
+  const engagementStats = getEngagementStats();
   const resolutionRate = complaints.length > 0 
     ? ((statusStats['Resolved'] / complaints.length) * 100).toFixed(1)
     : 0;
+  const maxMonthlyCount = Math.max(...monthlyTrend.map(m => m.count), 1);
+  const maxEngagement = Math.max(...engagementStats.map(e => e.count), 1);
 
   return (
     <div className="page-container">
@@ -119,6 +164,94 @@ const Analytics = () => {
                   <div className={`pie-color status-${status.toLowerCase().replace(' ', '-')}`}></div>
                   <div className="pie-label">{status}</div>
                   <div className="pie-value">{count}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div className="charts-grid">
+          <div className="chart-card">
+            <h3>Monthly Complaint Trend</h3>
+            <div className="vertical-bar-chart">
+              {monthlyTrend.length > 0 ? (
+                monthlyTrend.map((data, idx) => (
+                  <div key={idx} className="vertical-bar-item">
+                    <div className="vertical-bar-container">
+                      <div 
+                        className="vertical-bar-fill"
+                        style={{ height: `${(data.count / maxMonthlyCount) * 100}%` }}
+                      >
+                        <span className="vertical-bar-value">{data.count}</span>
+                      </div>
+                    </div>
+                    <div className="vertical-bar-label">{data.month}</div>
+                  </div>
+                ))
+              ) : (
+                <div className="no-data">No data available</div>
+              )}
+            </div>
+          </div>
+
+          <div className="chart-card">
+            <h3>Priority Level Distribution</h3>
+            <div className="bar-chart">
+              {priorityStats.map((stat, idx) => (
+                <div key={idx} className="bar-item">
+                  <div className="bar-label">
+                    <span className={`priority-badge priority-${stat.priority.toLowerCase()}`}>
+                      {stat.priority}
+                    </span>
+                  </div>
+                  <div className="bar-container">
+                    <div 
+                      className={`bar-fill priority-${stat.priority.toLowerCase()}-fill`}
+                      style={{ width: `${stat.percentage}%` }}
+                    >
+                      <span className="bar-value">{stat.count}</span>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div className="charts-grid">
+          <div className="chart-card">
+            <h3>Avg Resolution Time by Department (hours)</h3>
+            <div className="bar-chart">
+              {departmentStats.map((stat, idx) => (
+                <div key={idx} className="bar-item">
+                  <div className="bar-label">{stat.department}</div>
+                  <div className="bar-container">
+                    <div 
+                      className="bar-fill department-fill"
+                      style={{ width: `${(stat.hours / 35) * 100}%` }}
+                    >
+                      <span className="bar-value">{stat.hours}h</span>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="chart-card">
+            <h3>Citizen Engagement Metrics</h3>
+            <div className="bar-chart">
+              {engagementStats.map((stat, idx) => (
+                <div key={idx} className="bar-item">
+                  <div className="bar-label">{stat.activity}</div>
+                  <div className="bar-container">
+                    <div 
+                      className="bar-fill engagement-fill"
+                      style={{ width: `${(stat.count / maxEngagement) * 100}%` }}
+                    >
+                      <span className="bar-value">{stat.count.toLocaleString()}</span>
+                    </div>
+                  </div>
                 </div>
               ))}
             </div>

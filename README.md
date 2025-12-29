@@ -1,4 +1,45 @@
-# Getting Started with Create React App
+# 🌿 Smart Green City - Complaint Management System
+
+A modern web application for managing city complaints and environmental issues. Built with React (Frontend) and Node.js/Express (Backend).
+
+## 🚀 Quick Links
+
+- **[Deployment Guide](./VERCEL_DEPLOYMENT_GUIDE.md)** - Complete step-by-step deployment instructions
+- **[Quick Deploy](./QUICK_DEPLOY.md)** - Fast deployment reference (Hindi)
+- **[Deployment Summary](./DEPLOYMENT_SUMMARY.md)** - Overview of changes and setup
+
+---
+
+## 📋 Features
+
+- User Registration & Authentication
+- Complaint Submission with Image Upload
+- Real-time Complaint Tracking
+- Admin Dashboard
+- Analytics & Statistics
+- Air Quality Monitoring
+- Green Tips & Environmental Awareness
+
+---
+
+## 🛠️ Tech Stack
+
+**Frontend:**
+- React 19
+- React Router DOM
+- Axios
+- CSS3
+
+**Backend:**
+- Node.js
+- Express
+- MongoDB
+- JWT Authentication
+- Multer (File Upload)
+
+---
+
+## 💻 Local Development
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -63,7 +104,61 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/a
 
 ### Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+**See our comprehensive deployment guides:**
+
+- **[VERCEL_DEPLOYMENT_GUIDE.md](./VERCEL_DEPLOYMENT_GUIDE.md)** - Complete deployment instructions
+- **[QUICK_DEPLOY.md](./QUICK_DEPLOY.md)** - Quick reference guide (Hindi)
+- **[DEPLOYMENT_SUMMARY.md](./DEPLOYMENT_SUMMARY.md)** - Changes and configuration summary
+
+**Deployment Stack:**
+- Frontend: Vercel (Free)
+- Backend: Render (Free)
+- Database: MongoDB Atlas (Free)
+
+---
+
+## 🌐 Production Deployment
+
+### Prerequisites:
+1. MongoDB Atlas account (free)
+2. Render account (free)
+3. Vercel account (free)
+
+### Quick Steps:
+1. Deploy backend to Render
+2. Deploy frontend to Vercel
+3. Configure environment variables
+4. Test the application
+
+**Total Time: ~20-30 minutes**
+
+For detailed instructions, see [VERCEL_DEPLOYMENT_GUIDE.md](./VERCEL_DEPLOYMENT_GUIDE.md)
+
+---
+
+## 📝 Environment Variables
+
+**Frontend (.env.production):**
+```env
+REACT_APP_API_URL=https://your-backend.onrender.com/api
+```
+
+**Backend (Render):**
+```env
+NODE_ENV=production
+MONGODB_URI=mongodb+srv://...
+JWT_SECRET=your-secret-key
+CLIENT_URL=https://your-app.vercel.app
+```
+
+---
+
+## 🐛 Troubleshooting
+
+### "Server not responding" error on Vercel?
+- Make sure backend is deployed on Render
+- Check environment variables are set correctly
+- See [VERCEL_DEPLOYMENT_GUIDE.md](./VERCEL_DEPLOYMENT_GUIDE.md) for solutions
 
 ### `npm run build` fails to minify
 

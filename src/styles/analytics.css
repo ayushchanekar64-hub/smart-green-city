@@ -9,9 +9,35 @@
 
 .metric-card {
   background: white;
-  padding: 24px;
-  border-radius: 12px;
-  box-shadow: var(--shadow);
+  padding: 28px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+}
+
+.metric-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(180deg, var(--primary), var(--primary-light));
+  transform: scaleY(0);
+  transition: transform 0.3s;
+}
+
+.metric-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--primary);
+}
+
+.metric-card:hover::before {
+  transform: scaleY(1);
 }
 
 .metric-header {
@@ -28,14 +54,18 @@
 }
 
 .metric-icon {
-  font-size: 1.5rem;
+  font-size: 2rem;
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(16, 185, 129, 0.2));
+  padding: 10px;
+  border-radius: var(--radius-sm);
 }
 
 .metric-value {
-  font-size: 2.5rem;
-  font-weight: 700;
+  font-size: 2.8rem;
+  font-weight: 800;
   color: var(--text);
   margin-bottom: 8px;
+  letter-spacing: -1px;
 }
 
 .metric-trend {
@@ -52,17 +82,62 @@
   grid-template-columns: repeat(2, 1fr);
   gap: 24px;
   margin-bottom: 40px;
+  position: relative;
+}
+
+/* Diagonal Stripe Background */
+.charts-grid::before {
+  content: '';
+  position: absolute;
+  top: -50px;
+  left: -50px;
+  right: -50px;
+  bottom: -50px;
+  background-image: 
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 60px,
+      rgba(16, 185, 129, 0.01) 60px,
+      rgba(16, 185, 129, 0.01) 120px
+    );
+  pointer-events: none;
+  z-index: -1;
+  border-radius: var(--radius-xl);
 }
 
 .chart-card {
   background: white;
-  padding: 30px;
-  border-radius: 16px;
-  box-shadow: var(--shadow);
+  padding: 36px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  transition: all 0.3s;
+  border: 1px solid var(--border);
+}
+
+.chart-card:hover {
+  box-shadow: var(--shadow-lg);
+  border-color: rgba(16, 185, 129, 0.3);
 }
 
 .chart-card h3 {
-  margin-bottom: 24px;
+  margin-bottom: 28px;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text);
+  position: relative;
+  padding-bottom: 12px;
+}
+
+.chart-card h3::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 50px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary), var(--primary-light));
+  border-radius: 2px;
 }
 
 .bar-chart {
@@ -85,10 +160,11 @@
 
 .bar-container {
   flex: 1;
-  height: 32px;
+  height: 36px;
   background: var(--bg);
-  border-radius: 6px;
+  border-radius: var(--radius-sm);
   overflow: hidden;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 .bar-fill {
@@ -98,7 +174,19 @@
   align-items: center;
   justify-content: flex-end;
   padding-right: 12px;
-  transition: width 0.5s ease;
+  transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
+  position: relative;
+}
+
+.bar-fill::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2));
 }
 
 .bar-value {
@@ -137,29 +225,72 @@
 
 .environmental-metrics {
   margin-top: 40px;
+  position: relative;
+  padding: 40px;
+  background: 
+    linear-gradient(135deg, rgba(16, 185, 129, 0.02) 0%, rgba(59, 130, 246, 0.02) 100%);
+  border-radius: var(--radius-xl);
+  margin-bottom: 40px;
+}
+
+/* Hexagon Pattern Background */
+.environmental-metrics::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(circle at 25% 25%, rgba(16, 185, 129, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, rgba(59, 130, 246, 0.03) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+  border-radius: var(--radius-xl);
 }
 
 .environmental-metrics h2 {
   margin-bottom: 24px;
+  position: relative;
+  z-index: 1;
 }
 
 .env-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
+  position: relative;
+  z-index: 1;
 }
 
 .env-card {
   background: white;
-  padding: 24px;
-  border-radius: 12px;
-  box-shadow: var(--shadow);
+  padding: 28px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
   text-align: center;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid var(--border);
+}
+
+.env-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-xl);
+  border-color: var(--primary);
 }
 
 .env-icon {
-  font-size: 2.5rem;
-  margin-bottom: 12px;
+  font-size: 3rem;
+  margin-bottom: 16px;
+  display: inline-block;
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(16, 185, 129, 0.2));
+  padding: 16px;
+  border-radius: var(--radius-md);
+  transition: transform 0.3s;
+}
+
+.env-card:hover .env-icon {
+  transform: scale(1.1) rotate(5deg);
 }
 
 .env-card h3 {
@@ -211,9 +342,15 @@
 .insights-section {
   margin-top: 40px;
   background: white;
-  padding: 30px;
-  border-radius: 16px;
-  box-shadow: var(--shadow);
+  padding: 36px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--border);
+  transition: all 0.3s;
+}
+
+.insights-section:hover {
+  box-shadow: var(--shadow-lg);
 }
 
 .insights-section h3 {
@@ -229,14 +366,139 @@
 .insight-item {
   display: flex;
   gap: 16px;
-  padding: 16px;
-  background: var(--bg);
-  border-radius: 8px;
+  padding: 20px;
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.05), rgba(16, 185, 129, 0.08));
+  border-radius: var(--radius-md);
+  transition: all 0.3s;
+  border: 1px solid rgba(16, 185, 129, 0.1);
+}
+
+.insight-item:hover {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(16, 185, 129, 0.15));
+  transform: translateX(8px);
+  border-color: var(--primary);
+  box-shadow: var(--shadow-md);
 }
 
 .insight-icon {
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   flex-shrink: 0;
+  background: white;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow);
+}
+
+/* Vertical Bar Chart Styles */
+.vertical-bar-chart {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+  gap: 16px;
+  height: 250px;
+  padding: 20px 0;
+}
+
+.vertical-bar-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  height: 100%;
+}
+
+.vertical-bar-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.vertical-bar-fill {
+  width: 60%;
+  background: linear-gradient(180deg, var(--primary), var(--primary-dark));
+  border-radius: 8px 8px 0 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 8px;
+  transition: height 0.5s ease;
+  min-height: 30px;
+  position: relative;
+}
+
+.vertical-bar-value {
+  color: white;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.vertical-bar-label {
+  font-size: 0.85rem;
+  color: var(--text);
+  font-weight: 600;
+  text-align: center;
+}
+
+.no-data {
+  width: 100%;
+  text-align: center;
+  color: var(--text-light);
+  padding: 40px;
+  font-size: 1rem;
+}
+
+/* Priority Badge Styles */
+.priority-badge {
+  padding: 4px 12px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  display: inline-block;
+}
+
+.priority-badge.priority-high {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+.priority-badge.priority-medium {
+  background: #fef3c7;
+  color: #d97706;
+}
+
+.priority-badge.priority-low {
+  background: #dbeafe;
+  color: #2563eb;
+}
+
+/* Priority Bar Fill Styles */
+.priority-high-fill {
+  background: linear-gradient(90deg, #ef4444, #dc2626) !important;
+}
+
+.priority-medium-fill {
+  background: linear-gradient(90deg, #f59e0b, #d97706) !important;
+}
+
+.priority-low-fill {
+  background: linear-gradient(90deg, #3b82f6, #2563eb) !important;
+}
+
+/* Department Bar Fill Styles */
+.department-fill {
+  background: linear-gradient(90deg, #8b5cf6, #7c3aed) !important;
+}
+
+/* Engagement Bar Fill Styles */
+.engagement-fill {
+  background: linear-gradient(90deg, #10b981, #059669) !important;
 }
 
 @media (max-width: 1024px) {

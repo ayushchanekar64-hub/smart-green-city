@@ -1,4 +1,4 @@
-import React, { use, useEffect } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
 import { AuthProvider } from './context/AuthContext';
@@ -9,28 +9,12 @@ import Register from './pages/Register';
 import ReportIssue from './pages/ReportIssue';
 import TrackComplaint from './pages/TrackComplaint';
 import AdminDashboard from './pages/AdminDashboard';
-
 import Analytics from './pages/Analytics';
 import GreenTips from './pages/GreenTips';
 import AirQuality from './pages/AirQuality';
 import ShowUsers from './pages/ShowUsers';
-import axios from 'axios'
-
 
 function App() {
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get('http://localhost:5000/api/data');
-        console.log(response.data);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-    };
-
-    fetchData();
-  }, []);
   return (
     <Router>
       <AuthProvider>

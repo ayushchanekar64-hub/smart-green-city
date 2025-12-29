@@ -75,19 +75,19 @@ const GreenTips = () => {
     {
       title: '30-Day Plastic Free Challenge',
       desc: 'Eliminate single-use plastics from your daily routine',
-      participants: 1247,
+      participants: 0,
       icon: '🌍'
     },
     {
       title: 'Plant a Tree Campaign',
       desc: 'Plant and nurture a tree in your neighborhood',
-      participants: 892,
+      participants: 0,
       icon: '🌳'
     },
     {
       title: 'Zero Waste Week',
       desc: 'Minimize waste generation for one week',
-      participants: 634,
+      participants: 0,
       icon: '♻️'
     }
   ];

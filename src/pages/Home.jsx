@@ -29,7 +29,7 @@ const Home = () => {
           </div>
           <div className="hero-stats">
             <div className="stat-card">
-              <div className="stat-value">1,247</div>
+              <div className="stat-value">0</div>
               <div className="stat-label">Issues Resolved</div>
             </div>
             <div className="stat-card">
