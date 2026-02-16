@@ -1,0 +1,12 @@
+node_modules
+npm-debug.log
+yarn-error.log
+.git
+.gitignore
+README.md
+BACKEND_INTEGRATION.md
+BACKGROUND_DESIGNS.md
+UI_UX_IMPROVEMENTS.md
+QUICK_DEPLOY.md
+.env.local
+.env.*.local
