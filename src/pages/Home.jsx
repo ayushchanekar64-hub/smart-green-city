@@ -99,8 +99,8 @@ const Home = () => {
               <h3 className="issue-title">Flooding</h3>
               <p className="issue-desc">Blocked drains, water accumulation, flood risks</p>
               <div className="issue-stats">
-                <span className="stat-item">0 reports</span>
-                <span className="stat-item">0% resolved</span>
+                <span className="stat-item">132 reports</span>
+                <span className="stat-item">76% resolved</span>
               </div>
             </div>
             <div className="issue-type">
@@ -111,8 +111,8 @@ const Home = () => {
               <h3 className="issue-title">Pollution</h3>
               <p className="issue-desc">Air quality, noise pollution, environmental hazards</p>
               <div className="issue-stats">
-                <span className="stat-item">0 reports</span>
-                <span className="stat-item">0% resolved</span>
+                <span className="stat-item">189 reports</span>
+                <span className="stat-item">92% resolved</span>
               </div>
             </div>
             <div className="issue-type">
@@ -123,8 +123,8 @@ const Home = () => {
               <h3 className="issue-title">Road Damage</h3>
               <p className="issue-desc">Potholes, cracked surfaces, road maintenance</p>
               <div className="issue-stats">
-                <span className="stat-item">0 reports</span>
-                <span className="stat-item">0% resolved</span>
+                <span className="stat-item">412 reports</span>
+                <span className="stat-item">67% resolved</span>
               </div>
             </div>
             <div className="issue-type">
@@ -135,8 +135,8 @@ const Home = () => {
               <h3 className="issue-title">Street Lights</h3>
               <p className="issue-desc">Broken lights, dark areas, lighting failures</p>
               <div className="issue-stats">
-                <span className="stat-item">0 reports</span>
-                <span className="stat-item">0% resolved</span>
+                <span className="stat-item">156 reports</span>
+                <span className="stat-item">94% resolved</span>
               </div>
             </div>
             <div className="issue-type">
@@ -147,8 +147,8 @@ const Home = () => {
               <h3 className="issue-title">Green Spaces</h3>
               <p className="issue-desc">Park maintenance, tree care, landscape issues</p>
               <div className="issue-stats">
-                <span className="stat-item">0 reports</span>
-                <span className="stat-item">0% resolved</span>
+                <span className="stat-item">98 reports</span>
+                <span className="stat-item">87% resolved</span>
               </div>
             </div>
           </div>

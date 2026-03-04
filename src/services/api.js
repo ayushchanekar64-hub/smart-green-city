@@ -1,6 +1,8 @@
 // API Service for Smart Green City
-// Use relative URL if proxy is configured, otherwise use full URL
-const API_URL = process.env.REACT_APP_API_URL || '/api';
+import { getAPIBaseURL } from '../config/api';
+
+// Use environment-specific API URL
+const API_URL = getAPIBaseURL();
 
 // Get token from localStorage
 const getToken = () => localStorage.getItem('token');
