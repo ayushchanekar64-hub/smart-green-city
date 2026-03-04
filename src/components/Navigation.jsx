@@ -34,7 +34,7 @@ const Navigation = () => {
     <nav className="navbar">
       <div className="nav-container">
         <Link to="/" className="nav-brand">
-          <img src="/smart-green-city-logo.svg" alt="Smart Green City Logo" style={{ height: 36, marginRight: 8 }} />
+          <span className="brand-icon">🌱</span>
           <span className="brand-text">Smart Green City</span>
         </Link>
 

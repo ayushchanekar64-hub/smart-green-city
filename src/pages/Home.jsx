@@ -15,6 +15,19 @@ const Home = () => {
   return (
     <div className="home-page">
       <section className="hero-section">
+        <div className="particles">
+          {[...Array(20)].map((_, i) => (
+            <div
+              key={i}
+              className="particle"
+              style={{
+                left: `${Math.random() * 100}%`,
+                animationDelay: `${Math.random() * 20}s`,
+                animationDuration: `${15 + Math.random() * 10}s`
+              }}
+            />
+          ))}
+        </div>
         <div className="container">
           <div className="hero-content">
             <h1 className="hero-title">Smart Green City</h1>
@@ -62,30 +75,81 @@ const Home = () => {
       <section className="issues-section">
         <div className="container">
           <h2 className="section-title">Common Issues We Handle</h2>
+          <p className="issues-subtitle">
+            Click on any category to report related issues in your area
+          </p>
           <div className="issues-grid">
             <div className="issue-type">
-              <span className="issue-icon">🗑️</span>
-              <span>Garbage & Waste</span>
+              <div className="issue-icon-wrapper">
+                <span className="issue-icon">🗑️</span>
+                <div className="issue-badge">High Priority</div>
+              </div>
+              <h3 className="issue-title">Garbage & Waste</h3>
+              <p className="issue-desc">Illegal dumping, overflowing bins, waste collection issues</p>
+              <div className="issue-stats">
+                <span className="stat-item">0 reports</span>
+                <span className="stat-item">0% resolved</span>
+              </div>
             </div>
             <div className="issue-type">
-              <span className="issue-icon">🌊</span>
-              <span>Flooding</span>
+              <div className="issue-icon-wrapper">
+                <span className="issue-icon">🌊</span>
+                <div className="issue-badge">Urgent</div>
+              </div>
+              <h3 className="issue-title">Flooding</h3>
+              <p className="issue-desc">Blocked drains, water accumulation, flood risks</p>
+              <div className="issue-stats">
+                <span className="stat-item">0 reports</span>
+                <span className="stat-item">0% resolved</span>
+              </div>
             </div>
             <div className="issue-type">
-              <span className="issue-icon">🏭</span>
-              <span>Pollution</span>
+              <div className="issue-icon-wrapper">
+                <span className="issue-icon">🏭</span>
+                <div className="issue-badge">Monitor</div>
+              </div>
+              <h3 className="issue-title">Pollution</h3>
+              <p className="issue-desc">Air quality, noise pollution, environmental hazards</p>
+              <div className="issue-stats">
+                <span className="stat-item">0 reports</span>
+                <span className="stat-item">0% resolved</span>
+              </div>
             </div>
             <div className="issue-type">
-              <span className="issue-icon">🛣️</span>
-              <span>Road Damage</span>
+              <div className="issue-icon-wrapper">
+                <span className="issue-icon">🛣️</span>
+                <div className="issue-badge">Daily</div>
+              </div>
+              <h3 className="issue-title">Road Damage</h3>
+              <p className="issue-desc">Potholes, cracked surfaces, road maintenance</p>
+              <div className="issue-stats">
+                <span className="stat-item">0 reports</span>
+                <span className="stat-item">0% resolved</span>
+              </div>
             </div>
             <div className="issue-type">
-              <span className="issue-icon">💡</span>
-              <span>Street Lights</span>
+              <div className="issue-icon-wrapper">
+                <span className="issue-icon">💡</span>
+                <div className="issue-badge">Safety</div>
+              </div>
+              <h3 className="issue-title">Street Lights</h3>
+              <p className="issue-desc">Broken lights, dark areas, lighting failures</p>
+              <div className="issue-stats">
+                <span className="stat-item">0 reports</span>
+                <span className="stat-item">0% resolved</span>
+              </div>
             </div>
             <div className="issue-type">
-              <span className="issue-icon">🌳</span>
-              <span>Green Spaces</span>
+              <div className="issue-icon-wrapper">
+                <span className="issue-icon">🌳</span>
+                <div className="issue-badge">Green</div>
+              </div>
+              <h3 className="issue-title">Green Spaces</h3>
+              <p className="issue-desc">Park maintenance, tree care, landscape issues</p>
+              <div className="issue-stats">
+                <span className="stat-item">0 reports</span>
+                <span className="stat-item">0% resolved</span>
+              </div>
             </div>
           </div>
         </div>
